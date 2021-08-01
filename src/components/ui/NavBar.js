@@ -1,8 +1,9 @@
+import React, { useState, useEffect} from 'react'
 import { Link, NavLink } from "react-router-dom"
 import logo from '../../assets/movie-logo.png'
 import styled from 'styled-components'
 import DarkModeToggle from "react-dark-mode-toggle";
-import { useState } from "react";
+import { getGenres } from "../../helpers/getGenres";
 
 
 const LogoImg = styled.img`
@@ -11,6 +12,12 @@ const LogoImg = styled.img`
 `
 export const NavBar = () => {
     const [isDarkMode, setIsDarkMode] = useState(() => false);
+    const [genres, setGenres] = useState([])
+
+    useEffect(() => {
+        getGenres().then(setGenres)
+    }, [])
+
     return (
         <nav className={`navbar navbar-expand-lg navbar-light bg-light bg-gradient fw-bolder fs-5 m-3`}>
             <div className="container-fluid">
@@ -48,11 +55,13 @@ export const NavBar = () => {
                                 Genres
                             </a>
                             <ul className="dropdown-menu text-center dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
-
-                                <li ><Link className="dropdown-item" to={`/genre`} >PROPS</Link></li>
-                                <li ><Link className="dropdown-item" to={`/genre`} >PROPS</Link></li>
-                                <li ><Link className="dropdown-item" to={`/genre`} >PROPS</Link></li>
-
+                                {
+                                    genres.map(({ id, name }) => (
+                                        <NavLink key={id} activeClassName="active" to={`/genre/${name}`} className="dropdown-item">
+                                            {name}
+                                        </NavLink>
+                                    ))
+                                }
                             </ul>
                         </li>
                         <li className="nav-item">

@@ -26,8 +26,6 @@ export const CarouselComponent = () => {
     const { moviesCollection = [] } = moviesCarousel
 
     const imagesForCarousel = moviesCollection.slice(0, 8)
-    console.log("peticion carousel")
-    console.log("peticion desde carousel a la api")
 
     return (
         <div>

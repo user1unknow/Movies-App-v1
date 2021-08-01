@@ -13,10 +13,7 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-
-
                     <PublicRoutes isLoggedIn={isLoggedIn} component={PublicRouter} path="/" />
-
                 </Switch>
             </div>
         </Router>

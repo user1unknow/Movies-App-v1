@@ -1,30 +1,37 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { getMovies } from '../../helpers/getMovies'
+import { useLocation } from 'react-router-dom'
 import { usePage } from '../../hooks/usePage'
+import { getMovies } from '../../helpers/getMovies'
 import { Card } from '../ui/card/Card.jsx'
 import { CarouselComponent } from '../ui/carousel/CarouselComponent'
-const ContainerHomeScreen = styled.div`
-    height: auto
-`
+import queryString from 'query-string'
+import { SpinnerLoad } from '../ui/spinner/SpinnerLoad'
+import { PaginationButtons } from '../ui/buttons/PaginationButtons'
 
-export const HomeScreen = () => {
-    const [page, prevPage, nextPage] = usePage(1)
-    const [movies, setMovies] = useState([], 1)
+
+
+export const HomeScreen = ({ history }) => {
+
+    const location = useLocation()
+    const { page = 1 } = queryString.parse(location.search)
+    const [currentPage, functionPrevPage, functionNextPage] = usePage(parseInt(page), history)
+    const [movies, setMovies] = useState({ moviesCollection: [], total_pages: 0, loading: true })
     useEffect(() => {
-        getMovies(page).then(setMovies)
-    }, [page])
+        setTimeout(() => {
+            getMovies(currentPage).then(({ moviesCollection, total_pages }) => setMovies({ moviesCollection, total_pages, loading: false }))
+        }, 1500);
+    }, [currentPage])
 
-    const { moviesCollection = [], total_pages } = movies
+
+    const { moviesCollection, total_pages, loading } = movies
     const moviesReduced = moviesCollection.slice(9, 20)
+
     return (
-        <ContainerHomeScreen className="bg-light border border-2 border-dark rounded m-4">
-
-
+        <div className="bg-light border border-2 border-dark rounded m-4">
             {
-                page === 1 ?
+                currentPage === 1 ?
                     <>
-                        <h1 className="text-center mt-3">HOME SCREEN</h1>
+                        <h1 className="text-center mt-3 fw-bolder fs-1">HOME SCREEN</h1>
                         {
                             <CarouselComponent />
                         }
@@ -47,18 +54,16 @@ export const HomeScreen = () => {
                     </div>
 
             }
-            <div style={{ width: "100%" }} className="d-grid gap-2 d-flex justify-content-between">
+            {
+                loading === false
+                &&
+                <PaginationButtons functionPrevPage={functionPrevPage} functionNextPage={functionNextPage} currentPage={currentPage} total_pages={total_pages} />
+            }
 
-                <button onClick={prevPage} className={`btn btn-primary btn-lg ${page === 1 && 'disabled'}`}>
-                    <i className="fas fa-arrow-left"></i>
-                </button>
+            {
+                loading === true && <SpinnerLoad />
+            }
 
-                <button onClick={nextPage} className={`btn btn-primary btn-lg ${page === total_pages && 'disabled'}`}>
-                    <i className="fas fa-arrow-right"></i>
-                </button>
-
-            </div>
-
-        </ContainerHomeScreen>
+        </div>
     )
 }

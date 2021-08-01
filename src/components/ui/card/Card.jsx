@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import "flip-card-wc";
 import { FlipCard } from "./FlipCard";
 import "./styles/styles.css";
@@ -39,3 +40,13 @@ export const Card = ({ overview, poster_path, release_date, title, vote_average 
         </>
     );
 }
+
+
+Card.propTypes = {
+    overview: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired
+}
+
