@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 
 export const BackCard = styled.div`
-        height:450px;
+        height:480px;
         width: 100%;
-    
+        background-color: red;
     
         &::-webkit-scrollbar {
             width: 6px;
@@ -18,12 +18,12 @@ export const BackCard = styled.div`
 `
 
 export const FrontCard = styled.div`
-        height:450px;
+        height:480px;
         width: 100%;
 `
 
 export const PosterImg = styled.img`
-        height:450px;
+        height:480px;
         width: 100%;
         background-size: cover;
 `

@@ -1,17 +1,11 @@
-import axios from "axios";
+import axios from 'axios'
 
-// Me consulta peliculas por el las mas populares
-export const getMovies = async (page = 1) => {
-    const api_key = "6ec6635a806c61e4bb6f81c871f8c34c";
+// consultar peliculas por el tipo ej : upcoming, top y popular
+export const getMoviesByType = async (type, page) => {
 
-    const resp = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${api_key}&page=${page}`
-    );
-    const {
-        data: { total_pages },
-        data: { results },
-    } = resp;
-
+    const api_key = "6ec6635a806c61e4bb6f81c871f8c34c"
+    const resp = await axios.get(`https://api.themoviedb.org/3/movie/${type}?api_key=${api_key}&page=${page}`)
+    const { data: { total_pages }, data: { results } } = resp
     const filteredMovies = results.filter(
         ({
             title,
@@ -20,7 +14,7 @@ export const getMovies = async (page = 1) => {
             genre_ids,
             release_date,
             original_language,
-            vote_average,
+            vote_average
         }) => {
             return (
                 title !== "" &&
@@ -33,8 +27,6 @@ export const getMovies = async (page = 1) => {
             );
         }
     );
-
-
     const moviesCollection = filteredMovies.map(
         ({
             id,
@@ -57,8 +49,7 @@ export const getMovies = async (page = 1) => {
                 genres,
             };
         }
-    )
+    );
 
-    return { moviesCollection, total_pages };
-
-};
+    return { moviesCollection, total_pages }
+}

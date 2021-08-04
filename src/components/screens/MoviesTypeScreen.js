@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useLocation, useParams } from 'react-router-dom'
 import queryString from 'query-string'
-import { getMoviesByGenre } from '../../../helpers/getMoviesByGenre'
-import { usePage } from '../../../hooks/usePage'
-import { useLocation } from 'react-router-dom'
-import { Card } from '../../ui/card/Card'
-import { PaginationButtons } from '../../ui/buttons/PaginationButtons'
-import { useHistory } from "react-router-dom";
-import { SkeletonLoading } from '../../ui/skeleton/SkeletonLoading'
+import { usePage } from '../../hooks/usePage'
+import { getMoviesByType } from '../../helpers/getMoviesByType'
+import { PaginationButtons } from '../ui/buttons/PaginationButtons'
+import { Card } from '../ui/card/Card'
+import { SkeletonLoading } from '../ui/skeleton/SkeletonLoading'
 
-
-export const MoviesGenreScreen = ({ id, name }) => {
-    const history = useHistory();
+export const MoviesTypeScreen = ({ history }) => {
     const location = useLocation()
+    const { typeMovie } = useParams()
     const { page = 1 } = queryString.parse(location.search)
     const [currentPage, functionPrevPage, functionNextPage] = usePage(parseInt(page), history)
     const [movies, setMovies] = useState({ moviesCollection: [], total_pages: 0, loading: true })
 
-    const { moviesCollection, total_pages, loading } = movies
-
+    console.log(typeMovie)
     useEffect(() => {
         setMovies({ moviesCollection: [], total_pages: 0, loading: true })
         setTimeout(() => {
-            getMoviesByGenre(id, currentPage).then(({ moviesCollection, total_pages }) => setMovies({ moviesCollection, total_pages, loading: false }))
+            getMoviesByType(typeMovie, page).then(({ moviesCollection, total_pages }) => setMovies({ moviesCollection, total_pages, loading: false }))
         }, 1500);
-    }, [id, currentPage])
+    }, [typeMovie, page])
 
+    const { moviesCollection, total_pages, loading } = movies
 
     return (
         <div className="bg-light border border-2 border-dark rounded m-4">
@@ -34,7 +32,6 @@ export const MoviesGenreScreen = ({ id, name }) => {
                     <SkeletonLoading />
                     :
                     <>
-                        <h1 className="text-center mt-3 fw-bolder fs-1">{name.toUpperCase()}</h1>
                         <div className="row row-cols-1 row-cols-md-3 g-4 m-2 d-flex justify-content-center">
                             {
                                 moviesCollection.map(({ id, overview, poster_path, release_date, title, vote_average }) => (
@@ -51,6 +48,5 @@ export const MoviesGenreScreen = ({ id, name }) => {
             }
 
         </div>
-
     )
 }

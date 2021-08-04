@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import queryString from 'query-string'
 import { useLocation } from 'react-router-dom'
 import { usePage } from '../../hooks/usePage'
 import { getMovies } from '../../helpers/getMovies'
-import { Card } from '../ui/card/Card.jsx'
+import { SkeletonLoading } from '../ui/skeleton/SkeletonLoading'
+import { Card } from '../ui/card/Card'
 import { CarouselComponent } from '../ui/carousel/CarouselComponent'
-import queryString from 'query-string'
-import { SpinnerLoad } from '../ui/spinner/SpinnerLoad'
 import { PaginationButtons } from '../ui/buttons/PaginationButtons'
-
 
 
 export const HomeScreen = ({ history }) => {
@@ -17,11 +16,11 @@ export const HomeScreen = ({ history }) => {
     const [currentPage, functionPrevPage, functionNextPage] = usePage(parseInt(page), history)
     const [movies, setMovies] = useState({ moviesCollection: [], total_pages: 0, loading: true })
     useEffect(() => {
+        setMovies({ moviesCollection: [], total_pages: 0, loading: true })
         setTimeout(() => {
             getMovies(currentPage).then(({ moviesCollection, total_pages }) => setMovies({ moviesCollection, total_pages, loading: false }))
-        }, 1500);
+        }, 2000);
     }, [currentPage])
-
 
     const { moviesCollection, total_pages, loading } = movies
     const moviesReduced = moviesCollection.slice(9, 20)
@@ -29,7 +28,7 @@ export const HomeScreen = ({ history }) => {
     return (
         <div className="bg-light border border-2 border-dark rounded m-4">
             {
-                currentPage === 1 ?
+                currentPage === 1 && loading === false ?
                     <>
                         <h1 className="text-center mt-3 fw-bolder fs-1">HOME SCREEN</h1>
                         {
@@ -61,7 +60,7 @@ export const HomeScreen = ({ history }) => {
             }
 
             {
-                loading === true && <SpinnerLoad />
+                loading === true && <SkeletonLoading />
             }
 
         </div>

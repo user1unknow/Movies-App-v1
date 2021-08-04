@@ -13,8 +13,12 @@ export const darkTheme = {
 };
 
 export const GlobalStyles = createGlobalStyle`
+
+    :root{
+    --bg-color: ${(props) => props.theme.body};
+    }
 	body {
-		background-color: ${(props) => props.theme.body};
+		background-color: var(--bg-color);
         transition: all 1s;
 	}`;
 

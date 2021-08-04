@@ -1,3 +1,5 @@
 export const types = {
-    uiChangeTheme = "[UI] Change Theme"
+    login: "[AUTH] Login",
+    logout: "[AUTH] Logout",
+    uiChangeTheme: "[UI] Change Theme"
 }

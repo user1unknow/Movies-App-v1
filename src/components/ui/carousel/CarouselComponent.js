@@ -28,7 +28,7 @@ export const CarouselComponent = () => {
     const imagesForCarousel = moviesCollection.slice(0, 8)
 
     return (
-        <div>
+        <div className="ms-2">
             <Swiper effect={'coverflow'} grabCursor={true} centeredSlides={true} slidesPerView={'auto'}
                 autoplay={{
                     "delay": 2500,
