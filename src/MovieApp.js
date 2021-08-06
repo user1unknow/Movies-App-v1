@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import "animate.css"
 import { AppRouter } from './components/routers/AppRouter'
 import { ThemeProvider } from 'styled-components';
 import { darkTheme, GlobalStyles, lightTheme, StyledApp } from './styles';

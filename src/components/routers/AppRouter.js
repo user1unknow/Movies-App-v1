@@ -12,6 +12,7 @@ import { GenreScreen } from '../screens/genre/GenreScreen';
 import { HomeScreen } from '../screens/HomeScreen';
 import { MoviesTypeScreen } from '../screens/MoviesTypeScreen';
 import { NavBar } from '../ui/NavBar';
+import { Error404 } from '../screens/404/Error404';
 
 export const AppRouter = () => {
     const [checking, setChecking] = useState(true)
@@ -27,7 +28,14 @@ export const AppRouter = () => {
     }, [dispatch])
 
     if (checking) {
-        return <h1>WAIT</h1>
+        return (
+            <div className="mt-5 text-center">
+                <h1 className="text-center fs-1 pt-5 fw-bolder animate__animated animate__flash animate__infinite animate__slower">Loading...</h1>
+                <div className="spinner-border text-warning mt-5 " style={{ width: "200px", height: "200px" }} role="status">
+                    <span className="sr-only"></span>
+                </div>
+            </div>
+        )
     }
 
     return (
@@ -39,6 +47,7 @@ export const AppRouter = () => {
                     <Route exact path="/auth" component={AuthScreen} />
                     <Route exact path="/type/:typeMovie" component={MoviesTypeScreen} />
                     <Route exact path="/genre/:genreName" component={GenreScreen} />
+                    <Route path="*" component={Error404} />
                 </Switch>
             </div>
         </Router>

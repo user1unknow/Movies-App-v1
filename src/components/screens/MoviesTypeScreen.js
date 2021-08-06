@@ -14,7 +14,6 @@ export const MoviesTypeScreen = ({ history }) => {
     const [currentPage, functionPrevPage, functionNextPage] = usePage(parseInt(page), history)
     const [movies, setMovies] = useState({ moviesCollection: [], total_pages: 0, loading: true })
 
-    console.log(typeMovie)
     useEffect(() => {
         setMovies({ moviesCollection: [], total_pages: 0, loading: true })
         setTimeout(() => {

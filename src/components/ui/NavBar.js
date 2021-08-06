@@ -4,7 +4,8 @@ import logo from '../../assets/movie-logo.png'
 import styled from 'styled-components'
 import DarkModeToggle from "react-dark-mode-toggle";
 import { getGenres } from "../../helpers/getGenres";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { startLogout } from '../../redux/actions/auth';
 
 
 const LogoImg = styled.img`
@@ -15,11 +16,15 @@ export const NavBar = () => {
     const [isDarkMode, setIsDarkMode] = useState(() => false);
     const [genres, setGenres] = useState([])
     const { uid } = useSelector(state => state.auth)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         getGenres().then(setGenres)
     }, [])
 
+    const handleLogout = () => {
+        dispatch(startLogout())
+    }
     return (
         <>
             <nav className={`navbar navbar-expand-lg navbar-light bg-light bg-gradient fw-bolder fs-5 m-3`}>
@@ -90,9 +95,9 @@ export const NavBar = () => {
                                                 <i className="fas fa-film"></i> Your Movies
                                             </NavLink>
                                             <NavLink activeClassName="active" className="dropdown-item" exact to="/type/top_rated">
-                                                <i className="far fa-star"></i> Calification Movies
+                                                <i className="far fa-star"></i> Califications
                                             </NavLink>
-                                            <NavLink activeClassName="active" className="dropdown-item bg-danger" exact to="/type/popular">
+                                            <NavLink activeClassName="active" onClick={handleLogout} className="dropdown-item bg-danger" exact to="/type/popular">
                                                 <i className="fas fa-sign-in-alt"></i> Sign out
                                             </NavLink>
 
@@ -100,8 +105,6 @@ export const NavBar = () => {
                                     </li>
                             }
 
-
-                            {/* SWITCH */}
                             <li className="nav-item pt-1 pe-2 ps-1">
                                 <DarkModeToggle
                                     onChange={setIsDarkMode}
@@ -109,8 +112,6 @@ export const NavBar = () => {
                                     size={65}
                                 />
                             </li>
-
-
                         </ul>
                     </div>
                 </div>

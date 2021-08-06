@@ -14,7 +14,6 @@ export const usePage = (initialState, history) => {
     }
 
     const functionNextPage = () => {
-
         nextPage(1)
         history.push(`?page=${currentPage + 1}`)
         window.scrollTo(0, 0);

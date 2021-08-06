@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const BackCard = styled.div`
         height:480px;
         width: 100%;
-        background-color: red;
+        background-color: white;
     
         &::-webkit-scrollbar {
             width: 6px;

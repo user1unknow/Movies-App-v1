@@ -41,23 +41,37 @@ export const Card = ({ overview, poster_path, release_date, title, vote_average 
                     </FrontOfCard>} backOfCard={
                         <BackOfCard>
                             <BackCard className="backCard p-4 overflow-auto">
-                                <h1 className="text-center">{title}</h1>
-                                <p>{overview}</p>
-                                <h3 className="text-center pt-2">{release_date}</h3>
+                                <h1 className="text-center fw-bolder pb-2">{title}</h1>
+                                <p className="fs-5">{overview}</p>
 
-                                <StarsRating
-                                    count={5}
-                                    onChange={ratingChanged}
-                                    size={24}
-                                    color2={'#ffd700'} />
+                                <div className="row">
+                                    <div className="col-6 pt-4">
+                                        <p className="text-center fs-4 fw-bolder">Release Date</p>
+                                        <p className="text-center fs-4 fw-bolder">{release_date}</p>
+                                    </div>
+                                    <div className="col-6 pb-3">
+                                        <div className="mx-auto pt-3" style={{ width: "60%" }}>
+                                            <CircularProgressbar value={Math.round(vote_average * 10)}
+                                                text={`${Math.round(vote_average * 10)}%`}
+                                                background
+                                                backgroundPadding={3}
+                                                styles={buildStyles({
+                                                    backgroundColor: "black",
+                                                    textColor: "#fff",
+                                                    pathColor: "#fff",
+                                                    trailColor: "transparent"
+                                                })}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
 
-                                <div className="mx-auto pt-3" style={{ width: "40%" }}>
-                                    <CircularProgressbar value={Math.round(vote_average * 10)}
-                                        text={`${Math.round(vote_average * 10)}%`}
-                                        styles={buildStyles({
-                                            pathColor: "turquoise",
-                                            trailColor: "gold"
-                                        })}
+                                <div className="d-flex justify-content-center">
+                                    <StarsRating
+                                        count={5}
+                                        onChange={ratingChanged}
+                                        size={38}
+                                        color2={'#ffd700'}
                                     />
                                 </div>
                             </BackCard>

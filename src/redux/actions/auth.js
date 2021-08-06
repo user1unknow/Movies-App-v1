@@ -10,6 +10,13 @@ export const startGoogleLogin = () => {
     }
 }
 
+export const startLogout = () => {
+    return async (dispatch) => {
+        await firebase.auth().signOut()
+        dispatch(logout())
+    }
+}
+
 export const login = (uid, displayName) => {
     return {
         type: types.login,
@@ -17,5 +24,18 @@ export const login = (uid, displayName) => {
             uid,
             displayName
         }
+    }
+}
+
+export const logout = () => {
+    return {
+        type: types.logout,
+    }
+}
+
+export const error = (infoErr) => {
+    return{
+        type: types.setError,
+        payload: infoErr
     }
 }
