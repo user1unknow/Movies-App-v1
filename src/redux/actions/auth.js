@@ -32,10 +32,3 @@ export const logout = () => {
         type: types.logout,
     }
 }
-
-export const error = (infoErr) => {
-    return{
-        type: types.setError,
-        payload: infoErr
-    }
-}
