@@ -33,8 +33,8 @@ export const MoviesTypeScreen = ({ history }) => {
                     <>
                         <div className="row row-cols-1 row-cols-md-3 g-4 m-2 d-flex justify-content-center">
                             {
-                                moviesCollection.map(({ id, overview, poster_path, release_date, title, vote_average }) => (
-                                    <Card key={id} overview={overview} poster_path={poster_path} release_date={release_date} title={title} vote_average={vote_average} />
+                                moviesCollection.map((movieInfo) => (
+                                    <Card key={movieInfo.id} {...movieInfo} />
                                 ))
                             }
                         </div>

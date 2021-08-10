@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import validator from 'validator'
 import LoginImage from '../../../assets/test.png'
-import { startGoogleLogin } from '../../../redux/actions/auth';
+import { startGoogleLogin, startLoginEmailPassword } from '../../../redux/actions/auth';
 import { useForm } from '../../../hooks/useForm';
 import { errorEmailLogin, errorPasswordLogin, removeErrorEmailLogin, removeErrorPasswordLogin } from '../../../redux/actions/ui';
 
@@ -19,7 +19,7 @@ export const CardFrontLogin = ({ setFlipped }) => {
         event.preventDefault()
 
         if (isFormValidLogin()) {
-            console.log("Pasas")
+            dispatch(startLoginEmailPassword(emailLogin, passwordLogin))
         }
     }
 

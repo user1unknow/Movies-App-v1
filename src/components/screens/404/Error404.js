@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export const Error404 = () => {
     return (
-        <div className="bg-light text-dark no-border me-3 ">
+        <div className="bg-light text-dark no-border me-3 ms-3">
 
             <div className="row p-3">
                 <div className="col text-center ">

@@ -14,8 +14,13 @@ export const types = {
 
     //AUTH SCREEN REGISTER
 
-    uiSetErrorRegister: '[UI] Set error',
-    uiRemoveErrorRegister: '[UI] Remove error',
+    uiSetErrorRegister: '[UI] Set Error Register',
+    uiRemoveErrorRegister: '[UI] Remove Error Register',
+
+
+    //MOVIES
+
+    loadUserCalifications: "[MOVIES] Load User Califications",
 
     //THEME
 

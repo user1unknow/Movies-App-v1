@@ -4,10 +4,11 @@ import { useForm } from '../../../hooks/useForm'
 import validator from 'validator'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeErrorRegister, setErroRegister } from '../../../redux/actions/ui'
+import { registerUser } from '../../../redux/actions/auth'
 
 export const CardBackRegister = ({ setFlipped }) => {
     const dispatch = useDispatch()
-    const [formValues, handleInputChange] = useForm({ nameRegister: "", emailRegister: "", passwordRegister: "", password2Register: "" })
+    const [formValues, handleInputChange] = useForm({ nameRegister: "Sam", emailRegister: "sam@gmail.com", passwordRegister: "123456", password2Register: "123456" })
     const { nameRegister, emailRegister, passwordRegister, password2Register } = formValues
     const { msgError } = useSelector(state => state.ui)
 
@@ -16,7 +17,7 @@ export const CardBackRegister = ({ setFlipped }) => {
         event.preventDefault()
 
         if (isFormValid()) {
-            console.log("PASASTE")
+            dispatch(registerUser(nameRegister, emailRegister, passwordRegister))
         }
     }
 
@@ -46,15 +47,15 @@ export const CardBackRegister = ({ setFlipped }) => {
 
                 {
                     msgError &&
-                    <div class="alert alert-primary" role="alert">
-                        <p className="text-center m-1">{msgError}</p>
+                    <div class="alert alert-danger" role="alert">
+                        <p className="text-center m-1"><strong> {msgError.toUpperCase()} </strong></p>
                     </div>
                 }
                 <h1 className="text-center fw-bolder">REGISTER</h1>
 
                 <p className="form-label text-center mt-2">Name</p>
                 <input type="text" value={nameRegister} autoComplete="off" name="nameRegister" onChange={handleInputChange}
-                    className={`form-control rounded-pill text-center fw-bolde`} placeholder="name"
+                    className={`form-control rounded-pill text-center fw-bolder`} placeholder="name"
                 />
 
 

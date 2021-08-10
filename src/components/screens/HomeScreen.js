@@ -20,6 +20,7 @@ export const HomeScreen = ({ history }) => {
         setTimeout(() => {
             getMovies(currentPage).then(({ moviesCollection, total_pages }) => setMovies({ moviesCollection, total_pages, loading: false }))
         }, 2000);
+    
     }, [currentPage])
 
     const { moviesCollection, total_pages, loading } = movies
@@ -35,9 +36,10 @@ export const HomeScreen = ({ history }) => {
                             <CarouselComponent />
                         }
                         <div className="row row-cols-1 row-cols-md-3 g-4 m-2 d-flex justify-content-center">
+                            {/* { id, overview, poster_path, release_date, title, vote_average } */}
                             {
-                                moviesReduced.map(({ id, overview, poster_path, release_date, title, vote_average }) => (
-                                    <Card key={id} overview={overview} poster_path={poster_path} release_date={release_date} title={title} vote_average={vote_average} />
+                                moviesReduced.map((movieInfo) => (
+                                    <Card key={movieInfo.id} {...movieInfo} />
                                 ))
                             }
 
@@ -46,8 +48,8 @@ export const HomeScreen = ({ history }) => {
                     :
                     <div className="row row-cols-1 row-cols-md-3 g-4 m-2 d-flex justify-content-center">
                         {
-                            moviesCollection.map(({ id, overview, poster_path, release_date, title, vote_average }) => (
-                                <Card key={id} overview={overview} poster_path={poster_path} release_date={release_date} title={title} vote_average={vote_average} />
+                            moviesCollection.map((movieInfo) => (
+                                <Card key={movieInfo.id} {...movieInfo} />
                             ))
                         }
                     </div>
