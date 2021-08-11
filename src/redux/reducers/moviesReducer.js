@@ -1,13 +1,3 @@
-// const moviesCalificated = {
-//     id,
-//     title,
-//     overview,
-//     vote_average,
-//     user_calification: calification,
-//     poster_path,
-//     release_date,
-// }
-
 import { types } from "../types/types";
 
 const initialState = {
@@ -20,8 +10,12 @@ export const moviesReducer = (state = initialState, action) => {
         case types.loadUserCalifications:
             return {
                 ...state,
-                userCalifications: [...action.payload]
-                // userCalifications: action.payload
+                userCalifications: action.payload
+            }
+        case types.newUserCalification:
+            return {
+                ...state,
+                userCalifications: [action.payload, ...state.userCalifications]
             }
 
         default:

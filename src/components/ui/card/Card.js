@@ -87,7 +87,7 @@ export const Card = (props) => {
                                         />
                                         :
                                         !uid ?
-                                            <h1 className="text-center bg-warning rounded-pill fw-normal fs-4 p-2 mt-2">For vote, you need to be registered</h1>
+                                            <h1 className="text-center bg-warning rounded-pill fw-bolder fs-4 p-2 mt-2">For vote, you need to be registered</h1>
                                             :
                                             <h1 className="text-center bg-success rounded-pill font-weight-bold fs-4 p-2 mt-2">You already voted for this movie</h1>
                                 }

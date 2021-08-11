@@ -29,11 +29,12 @@ export const newMovieCalification = (calification, infoMovie) => {
             release_date,
         }
         try {
-            await db.collection(`${uid}/movies/user_califications`).add(newMovieCalification)
+            const doc = await db.collection(`${uid}/movies/user_califications`).add(newMovieCalification)
             Toast.fire({
                 icon: 'success',
                 title: 'Your calification has been saved!'
             })
+            dispatch(newUserCalification(doc.id, newMovieCalification))
         }
         catch (error) {
             Toast.fire({
@@ -45,6 +46,15 @@ export const newMovieCalification = (calification, infoMovie) => {
 
 }
 
+export const newUserCalification = (docId, newMovie) => {
+    return {
+        type: types.newUserCalification,
+        payload: {
+            docId,
+            ...newMovie
+        }
+    }
+}
 
 export const startLoadingUserCalifications = (uid) => {
     return async (dispatch) => {

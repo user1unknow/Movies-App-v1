@@ -12,18 +12,32 @@ export const usePage = (initialState, history) => {
     const nextPage = (value) => {
         setPage(currentPage + value)
     }
+    // NORMAL
 
     const functionNextPage = () => {
+        nextPage(1)
+        window.scrollTo(0, 350);
+    }
+
+    const functionPrevPage = () => {
+        prevPage(1)
+        window.scrollTo(0, 350);
+    }
+
+
+
+    // QUERY PARAMS
+    const functionNextPageQuery = () => {
         nextPage(1)
         history.push(`?page=${currentPage + 1}`)
         window.scrollTo(0, 0);
     }
 
-    const functionPrevPage = () => {
+    const functionPrevPageQuery = () => {
         prevPage(1)
         history.push(`?page=${currentPage - 1}`)
         window.scrollTo(0, 0);
     }
 
-    return [currentPage, functionPrevPage, functionNextPage]
+    return [currentPage, functionPrevPage, functionNextPage, functionPrevPageQuery, functionNextPageQuery]
 }

@@ -14,6 +14,7 @@ import { MoviesTypeScreen } from '../screens/MoviesTypeScreen';
 import { NavBar } from '../ui/NavBar';
 import { Error404 } from '../screens/404/Error404';
 import { startLoadingUserCalifications } from '../../redux/actions/movies';
+import { SearchScreen } from '../screens/search/SearchScreen';
 
 export const AppRouter = () => {
     const [checking, setChecking] = useState(true)
@@ -47,6 +48,7 @@ export const AppRouter = () => {
                 <Switch>
                     <Route exact path="/" component={HomeScreen} />
                     <Route exact path="/auth" component={AuthScreen} />
+                    <Route exact path="/search" component={SearchScreen} />
                     <Route exact path="/type/:typeMovie" component={MoviesTypeScreen} />
                     <Route exact path="/genre/:genreName" component={GenreScreen} />
                     <Route path="*" component={Error404} />

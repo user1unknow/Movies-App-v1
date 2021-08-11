@@ -13,7 +13,7 @@ export const MoviesGenreScreen = ({ id, name }) => {
     const history = useHistory();
     const location = useLocation()
     const { page = 1 } = queryString.parse(location.search)
-    const [currentPage, functionPrevPage, functionNextPage] = usePage(parseInt(page), history)
+    const [currentPage, functionPrevPageQuery, functionNextPageQuery] = usePage(parseInt(page), history)
     const [movies, setMovies] = useState({ moviesCollection: [], total_pages: 0, loading: true })
 
     const { moviesCollection, total_pages, loading } = movies
@@ -47,7 +47,7 @@ export const MoviesGenreScreen = ({ id, name }) => {
             {
                 loading === false
                 &&
-                <PaginationButtons functionPrevPage={functionPrevPage} functionNextPage={functionNextPage} currentPage={currentPage} total_pages={total_pages} />
+                <PaginationButtons functionPrevPage={functionPrevPageQuery} functionNextPage={functionNextPageQuery} currentPage={currentPage} total_pages={total_pages} />
             }
 
         </div>

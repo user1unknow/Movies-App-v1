@@ -21,6 +21,7 @@ export const types = {
     //MOVIES
 
     loadUserCalifications: "[MOVIES] Load User Califications",
+    newUserCalification: "[MOVIES] New User Calification",
 
     //THEME
 

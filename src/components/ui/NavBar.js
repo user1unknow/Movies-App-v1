@@ -74,7 +74,7 @@ export const NavBar = () => {
                                 </ul>
                             </li>
                             <li className="nav-item">
-                                <NavLink activeClassName="active" exact className="nav-link" to="/searchMovie" >Search</NavLink>
+                                <NavLink activeClassName="active" exact className="nav-link" to="/search" >Search</NavLink>
                             </li>
 
 

@@ -11,7 +11,7 @@ export const MoviesTypeScreen = ({ history }) => {
     const location = useLocation()
     const { typeMovie } = useParams()
     const { page = 1 } = queryString.parse(location.search)
-    const [currentPage, functionPrevPage, functionNextPage] = usePage(parseInt(page), history)
+    const [currentPage, functionPrevPageQuery, functionNextPageQuery] = usePage(parseInt(page), history)
     const [movies, setMovies] = useState({ moviesCollection: [], total_pages: 0, loading: true })
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export const MoviesTypeScreen = ({ history }) => {
             {
                 loading === false
                 &&
-                <PaginationButtons functionPrevPage={functionPrevPage} functionNextPage={functionNextPage} currentPage={currentPage} total_pages={total_pages} />
+                <PaginationButtons functionPrevPage={functionPrevPageQuery} functionNextPage={functionNextPageQuery} currentPage={currentPage} total_pages={total_pages} />
             }
 
         </div>
