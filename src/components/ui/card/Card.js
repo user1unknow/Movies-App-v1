@@ -49,7 +49,7 @@ export const Card = (props) => {
                     </FrontOfCard>
                 } backOfCard={
                     <BackOfCard>
-                        <BackCard className="backCard p-4 overflow-auto">
+                        <BackCard className="p-4 overflow-auto">
                             <h1 className="text-center fw-bolder pb-2">{title}</h1>
                             <p className="fs-5">{overview}</p>
 

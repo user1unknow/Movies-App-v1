@@ -91,13 +91,13 @@ export const NavBar = () => {
                                         </a>
                                         <ul className="dropdown-menu text-center dropdown-menu-dark dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 
-                                            <NavLink activeClassName="active" className="dropdown-item" exact to="/type/upcoming">
-                                                <i className="fas fa-film"></i> Your Movies
+                                            <NavLink activeClassName="active" className="dropdown-item" exact to="/opinions">
+                                                <i className="fas fa-film"></i> Opinions
                                             </NavLink>
-                                            <NavLink activeClassName="active" className="dropdown-item" exact to="/type/top_rated">
+                                            <NavLink activeClassName="active" className="dropdown-item" exact to="/califications">
                                                 <i className="far fa-star"></i> Califications
                                             </NavLink>
-                                            <NavLink activeClassName="active" onClick={handleLogout} className="dropdown-item bg-danger" exact to="/type/popular">
+                                            <NavLink activeClassName="active" onClick={handleLogout} className="dropdown-item bg-danger" exact to="/">
                                                 <i className="fas fa-sign-in-alt"></i> Sign out
                                             </NavLink>
 

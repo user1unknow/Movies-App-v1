@@ -15,8 +15,12 @@ import { NavBar } from '../ui/NavBar';
 import { Error404 } from '../screens/404/Error404';
 import { startLoadingUserCalifications } from '../../redux/actions/movies';
 import { SearchScreen } from '../screens/search/SearchScreen';
+import { PrivateRoutes } from './PrivateRoutes';
+import { UserCalificationScreen } from '../screens/user/califications/UserCalificationScreen';
+import { UserOpinionScreen } from '../screens/user/opinions/UserOpinionScreen';
 
 export const AppRouter = () => {
+    const [isLoggedIn, setisLoggedIn] = useState(false)
     const [checking, setChecking] = useState(true)
     const dispatch = useDispatch()
 
@@ -25,6 +29,10 @@ export const AppRouter = () => {
             if (user?.uid) {
                 dispatch(login(user.uid, user.displayName))
                 dispatch(startLoadingUserCalifications(user.uid))
+                setisLoggedIn(true)
+            }
+            else {
+                setisLoggedIn(false)
             }
             setChecking(false)
         })
@@ -49,6 +57,8 @@ export const AppRouter = () => {
                     <Route exact path="/" component={HomeScreen} />
                     <Route exact path="/auth" component={AuthScreen} />
                     <Route exact path="/search" component={SearchScreen} />
+                    <PrivateRoutes exact isLoggedIn={isLoggedIn} path="/califications" component={UserCalificationScreen} />
+                    <PrivateRoutes exact isLoggedIn={isLoggedIn} path="/opinions" component={UserOpinionScreen} />
                     <Route exact path="/type/:typeMovie" component={MoviesTypeScreen} />
                     <Route exact path="/genre/:genreName" component={GenreScreen} />
                     <Route path="*" component={Error404} />
