@@ -1,5 +1,4 @@
 import React from 'react'
-import register from '../../../assets/register.jpg'
 import { useForm } from '../../../hooks/useForm'
 import validator from 'validator'
 import { useDispatch, useSelector } from 'react-redux'
@@ -41,7 +40,7 @@ export const CardBackRegister = ({ setFlipped }) => {
     return (
         <div className="row g-0 pb-5 mt-4">
             <div className="col-sm-6 col-md-6  rounded" style={{ height: "auto" }}>
-                <img className="img-fluid img-thumbnail border-0 pb-5 pt-5 pe-2 ps-2" style={{ height: "84vh", width: "100%" }} src={register} alt="RegisterIMG" />
+                <img className="img-fluid img-thumbnail border-0 pb-5 pt-5 pe-2 ps-2" style={{ height: "84vh", width: "100%" }} src="https://img.freepik.com/vector-gratis/registro-linea-e-inscribase-hombre-sentado-cerca-telefono-inteligente_268404-95.jpg?size=626&ext=jpg" alt="RegisterIMG" />
             </div>
             <form onSubmit={handleRegister} className="col-sm-6 col-md-6 p-2 pe-4 ps-4 border border-2 bg-dark text-light">
 
@@ -77,7 +76,7 @@ export const CardBackRegister = ({ setFlipped }) => {
                 />
 
 
-                <div className="d-grid gap-2 p-5 pt-2">
+                <div className="d-grid gap-2 p-5 pt-5">
                     <button type="submit" className="btn btn-success rounded-pill mt-2">Register !!!</button>
                     <button onClick={() => setFlipped(value => !value)} type="button" className="btn btn-primary rounded-pill">Your are Register?</button>
                 </div>
