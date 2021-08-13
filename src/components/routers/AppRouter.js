@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import {
     BrowserRouter as Router,
     Switch,
-    Route
+    Route,
+    Redirect
 } from "react-router-dom";
 import { useDispatch } from 'react-redux'
 import { firebase } from '../../firebase/firebase-config'
@@ -59,6 +60,7 @@ export const AppRouter = () => {
                     <PrivateRoutes exact isLoggedIn={isLoggedIn} path="/califications" component={UserCalificationScreen} />
                     <Route exact path="/type/:typeMovie" component={MoviesTypeScreen} />
                     <Route exact path="/genre/:genreName" component={GenreScreen} />
+                    <Redirect to="/" />
                     <Route path="*" component={Error404} />
                 </Switch>
             </div>
