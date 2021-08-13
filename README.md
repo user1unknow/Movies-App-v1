@@ -7,7 +7,7 @@ Using Query Params, Axios, Styled Components, Bootstrap and Thunk
 
 ## LINKS 🔗
 - GitHub URL: [Repository](https://github.com/stevenmanriqueca/Movie-App)
-- Live Site URL: [GitHub Pages]()
+- Live Site URL: [GitHub Pages](https://stevenmanriqueca.github.io/Movie-App/)
 
 ### `npm start`
 

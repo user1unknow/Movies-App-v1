@@ -1,7 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect, useHistory } from 'react-router-dom'
 
 export const Error404 = () => {
+    const { location: { pathname } } = useHistory()
+
+    if (pathname === "/Movie-App/" || pathname === "/Movie-App") {
+        return <Redirect to="/" />
+    }
     return (
         <div className="bg-light text-dark no-border me-3 ms-3">
 
