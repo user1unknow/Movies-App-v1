@@ -57,9 +57,9 @@ export const CardFrontLogin = ({ setFlipped }) => {
     return (
         <div className="row g-0 pb-5">
             <div className="col-sm-6 col-md-6 rounded" style={{ height: "auto" }}>
-                <img className="img-fluid img-thumbnail border-0 pb-5 pt-5 pe-2 ps-2" style={{ height: "72vh", width: "100%" }} src={LoginImage} alt="LoginIMG" />
+                <img className="img-fluid img-thumbnail border-0 pb-5 pt-5 pe-2 ps-2" style={{ height: "80vh", width: "100%" }} src={LoginImage} alt="LoginIMG" />
             </div>
-            <form onSubmit={handleLogin} className="col-sm-6 col-md-6 pt-5 pe-4 ps-4 border border-2 ">
+            <form onSubmit={handleLogin} className="col-sm-6 col-md-6 pt-5 pe-4 ps-4 border border-2 bg-dark text-white">
 
                 <h1 className="text-center fw-bolder">LOGIN</h1>
 
@@ -80,7 +80,7 @@ export const CardFrontLogin = ({ setFlipped }) => {
                 {/* PASSWORD */}
                 <p className="form-label text-center mt-3">Password</p>
                 <input type="password" value={passwordLogin} autoComplete="off" name="passwordLogin" onChange={handleInputChange}
-                    className={`${inputPasswordLogin} form-control rounded-pill text-center fw-bolder fs-5`} placeholder="name@example.com"
+                    className={`${inputPasswordLogin} form-control rounded-pill text-center fw-bolder fs-5`} placeholder="Password"
                 />
                 {
                     inputPasswordLogin === "is-invalid" &&

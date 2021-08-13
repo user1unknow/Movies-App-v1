@@ -29,11 +29,13 @@ export const AuthScreen = () => {
     );
 
     return (
-        <FlipCardContainer>
-            <div style={{ position: "absolute" }} >
-                <FlipCard isFlipped={isFlipped} front={front} back={back} />
-            </div>
-        </FlipCardContainer>
+        <div className="bg-dark">
+            <FlipCardContainer >
+                <div style={{ position: "absolute" }} >
+                    <FlipCard isFlipped={isFlipped} front={front} back={back} />
+                </div>
+            </FlipCardContainer>
+        </div>
     );
 }
 

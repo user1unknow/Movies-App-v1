@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link, NavLink } from "react-router-dom"
 import logo from '../../assets/movie-logo.png'
 import styled from 'styled-components'
-import DarkModeToggle from "react-dark-mode-toggle";
 import { getGenres } from "../../helpers/getGenres";
 import { useDispatch, useSelector } from 'react-redux';
 import { startLogout } from '../../redux/actions/auth';
@@ -13,7 +12,6 @@ const LogoImg = styled.img`
     height: 62px;
 `
 export const NavBar = () => {
-    const [isDarkMode, setIsDarkMode] = useState(() => false);
     const [genres, setGenres] = useState([])
     const { uid } = useSelector(state => state.auth)
     const dispatch = useDispatch()
@@ -27,7 +25,7 @@ export const NavBar = () => {
     }
     return (
         <>
-            <nav className={`navbar navbar-expand-lg navbar-light bg-light bg-gradient fw-bolder fs-5 m-3`}>
+            <nav className={`navbar navbar-expand-lg navbar-dark bg-dark text-light fw-bolder fs-5 me-4 ms-4 mt-4 rounded`}>
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/" >
                         <LogoImg src={logo} alt="Logo" />
@@ -73,10 +71,6 @@ export const NavBar = () => {
                                     }
                                 </ul>
                             </li>
-                            <li className="nav-item">
-                                <NavLink activeClassName="active" exact className="nav-link" to="/search" >Search</NavLink>
-                            </li>
-
 
                             {
                                 !uid ?
@@ -91,9 +85,6 @@ export const NavBar = () => {
                                         </a>
                                         <ul className="dropdown-menu text-center dropdown-menu-dark dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 
-                                            <NavLink activeClassName="active" className="dropdown-item" exact to="/opinions">
-                                                <i className="fas fa-film"></i> Opinions
-                                            </NavLink>
                                             <NavLink activeClassName="active" className="dropdown-item" exact to="/califications">
                                                 <i className="far fa-star"></i> Califications
                                             </NavLink>
@@ -105,13 +96,12 @@ export const NavBar = () => {
                                     </li>
                             }
 
-                            <li className="nav-item pt-1 pe-2 ps-1">
-                                <DarkModeToggle
-                                    onChange={setIsDarkMode}
-                                    checked={isDarkMode}
-                                    size={65}
-                                />
+                            <li className="nav-item">
+                                <NavLink activeClassName="active" exact className="nav-link" to="/search" >Search</NavLink>
                             </li>
+
+
+
                         </ul>
                     </div>
                 </div>

@@ -4,7 +4,8 @@ import styled from 'styled-components';
 export const BackCard = styled.div`
         height:480px;
         width: 100%;
-        background-color: white;
+        background-color: black;
+        color:white;
     
         &::-webkit-scrollbar {
             width: 6px;
@@ -12,7 +13,7 @@ export const BackCard = styled.div`
         }
     
         &::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.842);
+            background: white;
             border-radius: 10px;
         }
 `

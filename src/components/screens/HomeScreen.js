@@ -13,21 +13,21 @@ export const HomeScreen = ({ history }) => {
 
     const location = useLocation()
     const { page = 1 } = queryString.parse(location.search)
-    const [currentPage, functionNextPageQuery, functionPrevPageQuery] = usePage(parseInt(page), history)
+    const [currentPage, functionPrevPage, functionNextPage] = usePage(parseInt(page), history)
     const [movies, setMovies] = useState({ moviesCollection: [], total_pages: 0, loading: true })
     useEffect(() => {
         setMovies({ moviesCollection: [], total_pages: 0, loading: true })
         setTimeout(() => {
             getMovies(currentPage).then(({ moviesCollection, total_pages }) => setMovies({ moviesCollection, total_pages, loading: false }))
         }, 2000);
-    
+
     }, [currentPage])
 
     const { moviesCollection, total_pages, loading } = movies
     const moviesReduced = moviesCollection.slice(9, 20)
 
     return (
-        <div className="bg-light border border-2 border-dark rounded m-4">
+        <div className="bg-light border border-2 border-dark rounded ms-4 me-4 mt-4  bg-dark ">
             {
                 currentPage === 1 && loading === false ?
                     <>
@@ -58,7 +58,7 @@ export const HomeScreen = ({ history }) => {
             {
                 loading === false
                 &&
-                <PaginationButtons functionPrevPage={functionPrevPageQuery} functionNextPage={functionNextPageQuery} currentPage={currentPage} total_pages={total_pages} />
+                <PaginationButtons functionPrevPage={functionPrevPage} functionNextPage={functionNextPage} currentPage={currentPage} total_pages={total_pages} />
             }
 
             {

@@ -40,7 +40,7 @@ export const Card = (props) => {
 
     return (
         <>
-            <div className="col">
+            <div className="col animate__animated animate__zoomIn">
                 <FlipCard variant="click" frontOfCard={
                     <FrontOfCard >
                         <FrontCard>
@@ -50,12 +50,12 @@ export const Card = (props) => {
                 } backOfCard={
                     <BackOfCard>
                         <BackCard className="p-4 overflow-auto">
-                            <h1 className="text-center fw-bolder pb-2">{title}</h1>
+                            <h1 className="text-center fw-bolder pb-2 text-success">{title}</h1>
                             <p className="fs-5">{overview}</p>
 
                             <div className="row">
                                 <div className="col-6 pt-4">
-                                    <p className="text-center fs-4 fw-bolder">Realease Date</p>
+                                    <p className="text-center fs-4 fw-bolder text-warning">Realease Date</p>
                                     <p className="text-center fs-4 fw-bolder">{release_date}</p>
                                 </div>
                                 <div className="col-6 pb-3">
@@ -67,7 +67,7 @@ export const Card = (props) => {
                                             styles={buildStyles({
                                                 backgroundColor: "black",
                                                 textColor: "#fff",
-                                                pathColor: "#fff",
+                                                pathColor: "#2196f3",
                                                 trailColor: "transparent"
                                             })}
                                         />
@@ -87,7 +87,7 @@ export const Card = (props) => {
                                         />
                                         :
                                         !uid ?
-                                            <h1 className="text-center bg-warning rounded-pill fw-bolder fs-4 p-2 mt-2">For vote, you need to be registered</h1>
+                                            <h1 className="text-center bg-danger rounded-pill fw-bolder fs-4 p-2 mt-2">For vote, you need to be registered</h1>
                                             :
                                             <h1 className="text-center bg-success rounded-pill font-weight-bold fs-4 p-2 mt-2">You already voted for this movie</h1>
                                 }

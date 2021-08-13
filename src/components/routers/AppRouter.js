@@ -17,7 +17,6 @@ import { startLoadingUserCalifications } from '../../redux/actions/movies';
 import { SearchScreen } from '../screens/search/SearchScreen';
 import { PrivateRoutes } from './PrivateRoutes';
 import { UserCalificationScreen } from '../screens/user/califications/UserCalificationScreen';
-import { UserOpinionScreen } from '../screens/user/opinions/UserOpinionScreen';
 
 export const AppRouter = () => {
     const [isLoggedIn, setisLoggedIn] = useState(false)
@@ -51,14 +50,13 @@ export const AppRouter = () => {
 
     return (
         <Router>
-            <div>
+            <div className="pb-4">
                 <NavBar />
                 <Switch>
                     <Route exact path="/" component={HomeScreen} />
                     <Route exact path="/auth" component={AuthScreen} />
                     <Route exact path="/search" component={SearchScreen} />
                     <PrivateRoutes exact isLoggedIn={isLoggedIn} path="/califications" component={UserCalificationScreen} />
-                    <PrivateRoutes exact isLoggedIn={isLoggedIn} path="/opinions" component={UserOpinionScreen} />
                     <Route exact path="/type/:typeMovie" component={MoviesTypeScreen} />
                     <Route exact path="/genre/:genreName" component={GenreScreen} />
                     <Route path="*" component={Error404} />

@@ -1,18 +1,30 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { startLoadingUserCalifications } from '../../../../redux/actions/movies'
 import { CardMovieCalificated } from './CardMovieCalificated'
 
 export const UserCalificationScreen = () => {
+
+    const dispatch = useDispatch()
+    const { uid } = useSelector(state => state.auth)
+    useEffect(() => {
+        dispatch(startLoadingUserCalifications(uid))
+    }, [dispatch, uid])
     const { userCalifications } = useSelector(state => state.movies)
-    console.log(userCalifications)
-    const registros = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
     return (
         <div className="bg-light border border-2 m-4 ">
-            <div className="row row-cols-1 row-cols-lg-3 g-2 g-lg-3 pb-4 justify-content-center bg-dark" style={{height:"auto"}}>
+            <div className="row row-cols-1 row-cols-lg-3 g-2 g-lg-3 pb-4 justify-content-center bg-dark">
                 {
-                    userCalifications.map((calification) => (
-                        <CardMovieCalificated key={calification.id} {...calification} />
-                    ))
+                    userCalifications.length > 0 ?
+                        userCalifications.map((calification) => (
+                            <CardMovieCalificated key={calification.id} {...calification} />
+                        ))
+                        :
+                        <div className="d-flex flex-column justify-content-center mt-5" style={{ width: "800px" }}>
+                            <p className="text-center fw-bolder fs-3 text-warning">OOPS! Looks like you haven't rated any movies.</p>
+                            <img className="d-block mt-4 mb-2 rounded" src="https://media.giphy.com/media/hEc4k5pN17GZq/giphy.gif" style={{ width: "100%" }} alt="GIF" />
+                        </div>
                 }
             </div>
         </div>

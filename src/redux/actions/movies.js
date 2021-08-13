@@ -46,6 +46,40 @@ export const newMovieCalification = (calification, infoMovie) => {
 
 }
 
+export const startLoadingUserCalifications = (uid) => {
+    return async (dispatch) => {
+        const califications = await loadCalifications(uid)
+        dispatch(setCalifications(califications))
+
+    }
+}
+
+export const startDeleting = (idCalification) => {
+    return async (dispatch, getState) => {
+        const { auth: { uid } } = getState()
+        await db.doc(`${uid}/movies/user_califications/${idCalification}`).delete()
+        dispatch(deleteUserCalification(idCalification))
+
+    }
+}
+
+export const startUpdate = (id_calification, movieUpCalification) => {
+    return async (dispatch, getState) => {
+        const { auth: { uid } } = getState()
+        const calificationFirestore = { id_calification, ...movieUpCalification }
+        await db.doc(`${uid}/movies/user_califications/${id_calification}`).update(calificationFirestore)
+        dispatch(updateUserCalification(id_calification, movieUpCalification))
+    }
+
+}
+
+export const setCalifications = (califications) => {
+    return {
+        type: types.loadUserCalifications,
+        payload: califications
+    }
+}
+
 export const newUserCalification = (docId, newMovie) => {
     return {
         type: types.newUserCalification,
@@ -56,18 +90,22 @@ export const newUserCalification = (docId, newMovie) => {
     }
 }
 
-export const startLoadingUserCalifications = (uid) => {
-    return async (dispatch) => {
-        const califications = await loadCalifications(uid)
-        dispatch(setCalifications(califications))
-
+export const deleteUserCalification = (id) => {
+    return {
+        type: types.deleteUserCalification,
+        payload: id
     }
 }
 
-
-export const setCalifications = (califications) => {
+export const updateUserCalification = (id_calification, movieUpCalification) => {
     return {
-        type: types.loadUserCalifications,
-        payload: califications
+        type: types.updateUserCalification,
+        payload: {
+            id_calification,
+            movieUpCalification: {
+                id_calification,
+                ...movieUpCalification
+            }
+        }
     }
 }

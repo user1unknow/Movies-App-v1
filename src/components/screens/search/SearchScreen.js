@@ -5,8 +5,8 @@ import queryString from 'query-string'
 import { searchMovie } from '../../../helpers/searchMovie'
 import { Card } from '../../ui/card/Card'
 import { SkeletonLoading } from '../../ui/skeleton/SkeletonLoading'
-import { usePage } from '../../../hooks/usePage'
 import { PaginationButtons } from '../../ui/buttons/PaginationButtons'
+import { usePageSearch } from '../../../hooks/usePageSearch'
 
 export const SearchScreen = ({ history }) => {
 
@@ -15,7 +15,7 @@ export const SearchScreen = ({ history }) => {
     const [movies, setMovies] = useState({ moviesCollection: [], total_pages: 0, loading: true })
     const [{ searchInput }, handleInputChange, reset] = useForm({ searchInput: "" })
     const { moviesCollection, total_pages, loading } = movies
-    const [currentPage, functionPrevPage, functionNextPage] = usePage(1)
+    const [currentPage, functionPrevPage, functionNextPage] = usePageSearch(1)
 
     useEffect(() => {
         setMovies({ moviesCollection: [], total_pages: 0, loading: true })
@@ -32,8 +32,8 @@ export const SearchScreen = ({ history }) => {
 
 
     return (
-        <div className="bg-light border border-2 border-dark rounded m-4">
-            <h1 className="text-center mt-3 fw-bolder fs-1">SEARCH</h1>
+        <div className="bg-light border border-2 border-dark rounded m-4 ms-4 me-4 mt-4  bg-dark" style={{height:"100%"}}>
+            <h1 className="text-center mt-3 fw-bolder fs-1 text-light">SEARCH</h1>
             <form onSubmit={functionSearchMovie} autoComplete="off" className="input-group mb-3">
                 <input type="text"
                     className="form-control m-5 me-0 text-center fw-bolder"
@@ -51,20 +51,18 @@ export const SearchScreen = ({ history }) => {
 
             {
                 (moviesCollection.length > 0 && loading === false) &&
-                <div className="bg-light border border-2  rounded m-4">
-                    <div className="row row-cols-1 row-cols-md-3 g-4 m-2 d-flex justify-content-center">
+                    <div className="row row-cols-1 row-cols-md-3 g-4 m-2 d-flex justify-content-center bg-dark">
                         {
                             moviesCollection.map((movieInfo) => (
                                 <Card key={movieInfo.id} {...movieInfo} />
                             ))
                         }
                     </div>
-                </div>
             }
 
             {
                 q === "" &&
-                <h3 className=" m-5 text-center text-primary fw-bolder " >
+                <h3 className="m-5 text-center text-primary fw-bolder" style={{height:"26vh"}}  >
                     Search your movie <i className="fas fa-search"></i>
                 </h3>
             }
@@ -75,7 +73,7 @@ export const SearchScreen = ({ history }) => {
             }
             {
                 (q !== "" && moviesCollection.length === 0 && loading === false) &&
-                <h3 className=" m-5 text-center text-danger fw-bolder " >
+                <h3 className=" m-5 text-center text-danger fw-bolder" style={{height:"26vh"}} >
                     Sorry, we couldn't find your movie, try another one! <i className="fas fa-times"></i>
                 </h3>
             }

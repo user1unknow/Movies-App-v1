@@ -28,7 +28,7 @@ export const CarouselComponent = () => {
     const imagesForCarousel = moviesCollection.slice(0, 8)
 
     return (
-        <div className="ms-2">
+        <div className="ms-2 animate__animated animate__backInDown">
             <Swiper effect={'coverflow'} grabCursor={true} centeredSlides={true} slidesPerView={'auto'}
                 autoplay={{
                     "delay": 2500,
@@ -40,7 +40,7 @@ export const CarouselComponent = () => {
                     "depth": 100,
                     "modifier": 1,
                     "slideShadows": true
-                }} pagination={true} className="mySwiper">
+                }} pagination={true} className="mySwiper animate__animated animate__backInDown">
 
                 {
                     imagesForCarousel.map(({ id, poster_path, title }) => (

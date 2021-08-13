@@ -8,7 +8,7 @@ import { registerUser } from '../../../redux/actions/auth'
 
 export const CardBackRegister = ({ setFlipped }) => {
     const dispatch = useDispatch()
-    const [formValues, handleInputChange] = useForm({ nameRegister: "Sam", emailRegister: "sam@gmail.com", passwordRegister: "123456", password2Register: "123456" })
+    const [formValues, handleInputChange] = useForm({ nameRegister: "", emailRegister: "", passwordRegister: "", password2Register: "" })
     const { nameRegister, emailRegister, passwordRegister, password2Register } = formValues
     const { msgError } = useSelector(state => state.ui)
 
@@ -39,11 +39,11 @@ export const CardBackRegister = ({ setFlipped }) => {
 
 
     return (
-        <div className="row g-0 pb-5 overflow-none">
+        <div className="row g-0 pb-5 mt-4">
             <div className="col-sm-6 col-md-6  rounded" style={{ height: "auto" }}>
-                <img className="img-fluid img-thumbnail border-0 pb-5 pt-5 pe-2 ps-2" style={{ height: "72vh", width: "100%" }} src={RegisterImage2} alt="RegisterIMG" />
+                <img className="img-fluid img-thumbnail border-0 pb-5 pt-5 pe-2 ps-2" style={{ height: "84vh", width: "100%" }} src={RegisterImage2} alt="RegisterIMG" />
             </div>
-            <form onSubmit={handleRegister} className="col-sm-6 col-md-6 p-2 pe-4 ps-4 border border-2 ">
+            <form onSubmit={handleRegister} className="col-sm-6 col-md-6 p-2 pe-4 ps-4 border border-2 bg-dark text-light">
 
                 {
                     msgError &&
@@ -78,7 +78,7 @@ export const CardBackRegister = ({ setFlipped }) => {
 
 
                 <div className="d-grid gap-2 p-5 pt-2">
-                    <button type="submit" className="btn btn-success rounded-pill mt-4">Register !!!</button>
+                    <button type="submit" className="btn btn-success rounded-pill mt-2">Register !!!</button>
                     <button onClick={() => setFlipped(value => !value)} type="button" className="btn btn-primary rounded-pill">Your are Register?</button>
                 </div>
             </form>

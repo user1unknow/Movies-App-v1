@@ -1,7 +1,6 @@
-// import queryString from 'query-string'
 import { useState } from 'react'
 
-export const usePage = (initialState, history) => {
+export const usePageSearch = (initialState) => {
 
     const [currentPage, setPage] = useState(initialState)
 
@@ -12,20 +11,18 @@ export const usePage = (initialState, history) => {
     const nextPage = (value) => {
         setPage(currentPage + value)
     }
- 
+    // NORMAL
 
-    // QUERY PARAMS
     const functionNextPage = () => {
         nextPage(1)
-        history.push(`?page=${currentPage + 1}`)
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 350);
     }
 
     const functionPrevPage = () => {
         prevPage(1)
-        history.push(`?page=${currentPage - 1}`)
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 350);
     }
+
 
     return [currentPage, functionPrevPage, functionNextPage]
 }
