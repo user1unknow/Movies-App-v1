@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterImage2 from '../../../assets/registerImage.jpg'
+import register from '../../../assets/register.jpg'
 import { useForm } from '../../../hooks/useForm'
 import validator from 'validator'
 import { useDispatch, useSelector } from 'react-redux'
@@ -41,7 +41,7 @@ export const CardBackRegister = ({ setFlipped }) => {
     return (
         <div className="row g-0 pb-5 mt-4">
             <div className="col-sm-6 col-md-6  rounded" style={{ height: "auto" }}>
-                <img className="img-fluid img-thumbnail border-0 pb-5 pt-5 pe-2 ps-2" style={{ height: "84vh", width: "100%" }} src={RegisterImage2} alt="RegisterIMG" />
+                <img className="img-fluid img-thumbnail border-0 pb-5 pt-5 pe-2 ps-2" style={{ height: "84vh", width: "100%" }} src={register} alt="RegisterIMG" />
             </div>
             <form onSubmit={handleRegister} className="col-sm-6 col-md-6 p-2 pe-4 ps-4 border border-2 bg-dark text-light">
 
