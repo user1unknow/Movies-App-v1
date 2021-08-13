@@ -13,7 +13,6 @@ import { GenreScreen } from '../screens/genre/GenreScreen';
 import { HomeScreen } from '../screens/HomeScreen';
 import { MoviesTypeScreen } from '../screens/MoviesTypeScreen';
 import { NavBar } from '../ui/NavBar';
-import { Error404 } from '../screens/404/Error404';
 import { startLoadingUserCalifications } from '../../redux/actions/movies';
 import { SearchScreen } from '../screens/search/SearchScreen';
 import { PrivateRoutes } from './PrivateRoutes';
@@ -61,7 +60,6 @@ export const AppRouter = () => {
                     <Route exact path="/type/:typeMovie" component={MoviesTypeScreen} />
                     <Route exact path="/genre/:genreName" component={GenreScreen} />
                     <Redirect to="/" />
-                    <Route path="*" component={Error404} />
                 </Switch>
             </div>
         </Router>
