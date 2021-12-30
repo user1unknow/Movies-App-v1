@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/swiper.min.css";
 import "swiper/components/effect-coverflow/effect-coverflow.min.css"
 import "swiper/components/pagination/pagination.min.css"
@@ -14,7 +12,7 @@ import { getMovies } from '../../../helpers/getMovies';
 
 
 export const CarouselComponent = () => {
-    // install Swiper modules
+
     SwiperCore.use([Autoplay, EffectCoverflow, Pagination]);
 
     const [moviesCarousel, setMoviesCarousel] = useState([])

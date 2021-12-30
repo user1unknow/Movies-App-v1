@@ -13,7 +13,7 @@ export const ImgPoster = styled.img`
 export const DivInfoCalification = styled.div`
     height: 440px; 
     overflow: auto; 
-    backgroundColor: black; 
+    background: black; 
     color: white;
 
 
@@ -23,7 +23,7 @@ export const DivInfoCalification = styled.div`
     }
 
     &::-webkit-scrollbar-thumb {
-        background: white;
+        background: #ffc107;
         border-radius: 10px;
     }
 `

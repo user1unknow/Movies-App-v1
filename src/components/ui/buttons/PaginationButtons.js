@@ -5,11 +5,11 @@ export const PaginationButtons = ({ functionPrevPage, functionNextPage, currentP
     return (
         <div className="d-grid gap-2 d-flex justify-content-between m-4">
 
-            <button onClick={functionPrevPage} className={`btn bg-light btn-outline-dark btn-lg border-2 rounded-circle ${currentPage === 1 && 'disabled'}`}>
+            <button onClick={functionPrevPage} className={`btn bg-dark text-light btn-lg border-2 rounded-circle ${currentPage === 1 && 'disabled'}`}>
                 <i className="fas fa-arrow-left"></i>
             </button>
 
-            <button onClick={functionNextPage} className={`btn bg-light btn-outline-dark border-2 btn-lg rounded-circle ${currentPage === total_pages && 'disabled'}`}>
+            <button onClick={functionNextPage} className={`btn bg-dark text-light btn-lg border-2 rounded-circle ${currentPage === total_pages && 'disabled'}`}>
                 <i className="fas fa-arrow-right"></i>
             </button>
 

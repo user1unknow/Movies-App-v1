@@ -13,8 +13,8 @@ export const UserCalificationScreen = () => {
     const { userCalifications } = useSelector(state => state.movies)
 
     return (
-        <div className="bg-light border border-2 m-4 ">
-            <div className="row row-cols-1 row-cols-lg-3 g-2 g-lg-3 pb-4 justify-content-center bg-dark">
+        <div className=" border border-2 border-dark m-4 ">
+            <div className="row row-cols-1 row-cols-lg-3 g-2 g-lg-3 pb-4 justify-content-center">
                 {
                     userCalifications.length > 0 ?
                         userCalifications.map((calification) => (

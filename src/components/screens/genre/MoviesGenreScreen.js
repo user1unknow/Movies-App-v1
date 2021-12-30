@@ -27,7 +27,7 @@ export const MoviesGenreScreen = ({ id, name }) => {
 
 
     return (
-        <div className="bg-light border border-2 border-dark rounded ms-4 me-4 mt-4  bg-dark">
+        <div className="border border-2 border-dark rounded ms-4 me-4 mt-4">
             {
                 loading === true
                     ?

@@ -13,7 +13,7 @@ export const BackCard = styled.div`
         }
     
         &::-webkit-scrollbar-thumb {
-            background: white;
+            background: #2196f3;
             border-radius: 10px;
         }
 `

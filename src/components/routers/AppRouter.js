@@ -8,10 +8,10 @@ import {
 import { useDispatch } from 'react-redux'
 import { firebase } from '../../firebase/firebase-config'
 import { login } from '../../redux/actions/auth';
-import { AuthScreen } from '../screens/auth/AuthScreen';
+import { Auth } from '../screens/auth/Auth';
 import { GenreScreen } from '../screens/genre/GenreScreen';
 import { HomeScreen } from '../screens/HomeScreen';
-import { MoviesTypeScreen } from '../screens/MoviesTypeScreen';
+import { MoviesTypeScreen } from '../screens/type/MoviesTypeScreen';
 import { NavBar } from '../ui/NavBar';
 import { startLoadingUserCalifications } from '../../redux/actions/movies';
 import { SearchScreen } from '../screens/search/SearchScreen';
@@ -54,7 +54,7 @@ export const AppRouter = () => {
                 <NavBar />
                 <Switch>
                     <Route exact path="/" component={HomeScreen} />
-                    <Route exact path="/auth" component={AuthScreen} />
+                    <Route exact path="/auth" component={Auth} />
                     <Route exact path="/search" component={SearchScreen} />
                     <PrivateRoutes exact isLoggedIn={isLoggedIn} path="/califications" component={UserCalificationScreen} />
                     <Route exact path="/type/:typeMovie" component={MoviesTypeScreen} />

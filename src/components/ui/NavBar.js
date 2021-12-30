@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link, NavLink } from "react-router-dom"
-import logo from '../../assets/movie-logo.png'
-import styled from 'styled-components'
 import { getGenres } from "../../helpers/getGenres";
 import { useDispatch, useSelector } from 'react-redux';
 import { startLogout } from '../../redux/actions/auth';
+import logo from '../../assets/movie-logo.png'
 
-
-const LogoImg = styled.img`
-    width: 80px;
-    height: 62px;
-`
 export const NavBar = () => {
     const [genres, setGenres] = useState([])
     const { uid } = useSelector(state => state.auth)
@@ -25,10 +19,10 @@ export const NavBar = () => {
     }
     return (
         <>
-            <nav className={`navbar navbar-expand-lg navbar-dark bg-dark text-light fw-bolder fs-5 me-4 ms-4 mt-4 rounded`}>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-light fw-bolder fs-5 me-4 ms-4 mt-4 rounded">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/" >
-                        <LogoImg src={logo} alt="Logo" />
+                        <img style={{ width: "80px", height: "62px" }} src={logo} alt="Logo" />
                     </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -99,9 +93,6 @@ export const NavBar = () => {
                             <li className="nav-item">
                                 <NavLink activeClassName="active" exact className="nav-link" to="/search" >Search</NavLink>
                             </li>
-
-
-
                         </ul>
                     </div>
                 </div>

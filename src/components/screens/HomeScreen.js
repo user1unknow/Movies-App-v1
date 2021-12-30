@@ -15,6 +15,7 @@ export const HomeScreen = ({ history }) => {
     const { page = 1 } = queryString.parse(location.search)
     const [currentPage, functionPrevPage, functionNextPage] = usePage(parseInt(page), history)
     const [movies, setMovies] = useState({ moviesCollection: [], total_pages: 0, loading: true })
+    
     useEffect(() => {
         setMovies({ moviesCollection: [], total_pages: 0, loading: true })
         setTimeout(() => {
@@ -27,16 +28,14 @@ export const HomeScreen = ({ history }) => {
     const moviesReduced = moviesCollection.slice(9, 20)
 
     return (
-        <div className="bg-light border border-2 border-dark rounded ms-4 me-4 mt-4  bg-dark ">
+        <div className="border border-2 border-dark rounded m-4">
             {
                 currentPage === 1 && loading === false ?
                     <>
-                        <h1 className="text-center mt-3 fw-bolder fs-1">HOME SCREEN</h1>
                         {
                             <CarouselComponent />
                         }
                         <div className="row row-cols-1 row-cols-md-3 g-4 m-2 d-flex justify-content-center">
-                            {/* { id, overview, poster_path, release_date, title, vote_average } */}
                             {
                                 moviesReduced.map((movieInfo) => (
                                     <Card key={movieInfo.id} {...movieInfo} />

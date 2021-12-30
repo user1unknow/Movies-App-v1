@@ -10,7 +10,6 @@ export const SkeletonLoading = () => {
 
     return (
         <SkeletonTheme color="gray" highlightColor="white">
-            {/* <SkeletonTheme color="#666666" highlightColor="#9E9E9E"></SkeletonTheme> */}
             <div className="row row-cols-1 row-cols-md-3 g-4 m-2 d-flex justify-content-center ">
                 {
                     cardSkeleton.map((card) => (
